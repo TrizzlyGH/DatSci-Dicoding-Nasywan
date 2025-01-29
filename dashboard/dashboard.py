@@ -1,11 +1,11 @@
-import matplotlib.pyplot as plt
-import pandas as pd
-import seaborn as sns
 import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Load dataset
-day_data = pd.read_csv("data/data_1.csv")
-hour_data = pd.read_csv("data/data_2.csv")
+day_data = pd.read_csv("../data/data_1.csv")
+hour_data = pd.read_csv("../data/data_2.csv")
 
 # Convert date column to datetime format
 day_data['dteday'] = pd.to_datetime(day_data['dteday'])
