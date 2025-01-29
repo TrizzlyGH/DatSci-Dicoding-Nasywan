@@ -52,32 +52,40 @@ fig, ax = plt.subplots()
 sns.boxplot(data=day_data, x="weathersit", y="cnt", ax=ax)
 st.pyplot(fig)
 
-# Visualisasi penggunaan sepeda berdasarkan waktu
-st.subheader("Pola Penggunaan Sepeda per Jam")
-fig, ax = plt.subplots(figsize=(10, 6))
-sns.boxplot(x=hour_data['hr'].astype(str), y='cnt', data=hour_data, ax=ax)
-st.pyplot(fig)
+# Menjawab Pertanyaan 1: Pola penggunaan sepeda berdasarkan waktu (jam, hari, atau musim)
+st.subheader("Pola Penggunaan Sepeda Berdasarkan Waktu")
 
-# Visualisasi tren penyewaan sepeda per hari
-st.subheader("Tren Penyewaan Sepeda per Hari")
+# Visualisasi Tren Penyewaan Sepeda per Hari (Tanggal)
 fig, ax = plt.subplots(figsize=(10, 5))
 sns.lineplot(data=day_data, x="dteday", y="cnt", ax=ax)
 plt.xticks(rotation=45)
 st.pyplot(fig)
 
-# Visualisasi pengaruh suhu terhadap jumlah peminjaman
+# Visualisasi Penggunaan Sepeda per Jam (Data per Jam)
+st.subheader("Pola Penggunaan Sepeda per Jam")
+fig, ax = plt.subplots(figsize=(10, 6))
+sns.boxplot(x=hour_data['hr'].astype(str), y='cnt', data=hour_data, ax=ax)
+st.pyplot(fig)
+
+# Menjawab Pertanyaan 2: Pengaruh Cuaca terhadap Jumlah Peminjaman Sepeda
+st.subheader("Pengaruh Cuaca terhadap Jumlah Peminjaman Sepeda")
+fig, ax = plt.subplots()
+sns.boxplot(data=day_data, x="weathersit", y="cnt", ax=ax)
+st.pyplot(fig)
+
+# Visualisasi Pengaruh Suhu terhadap Peminjaman Sepeda
 st.subheader("Pengaruh Suhu terhadap Penggunaan Sepeda")
 fig, ax = plt.subplots(figsize=(10, 6))
 sns.scatterplot(x='temp', y='cnt', data=day_data, palette="coolwarm", ax=ax)
 st.pyplot(fig)
 
-# Visualisasi pengaruh kelembaban terhadap peminjaman
+# Visualisasi Pengaruh Kelembaban terhadap Peminjaman Sepeda
 st.subheader("Pengaruh Kelembaban terhadap Penggunaan Sepeda")
 fig, ax = plt.subplots(figsize=(10, 6))
 sns.scatterplot(x='hum', y='cnt', data=day_data, palette="coolwarm", ax=ax)
 st.pyplot(fig)
 
-# Visualisasi pengaruh kecepatan angin terhadap peminjaman
+# Visualisasi Pengaruh Kecepatan Angin terhadap Peminjaman Sepeda
 st.subheader("Pengaruh Kecepatan Angin terhadap Penggunaan Sepeda")
 fig, ax = plt.subplots(figsize=(10, 6))
 sns.scatterplot(x='windspeed', y='cnt', data=day_data, palette="coolwarm", ax=ax)
