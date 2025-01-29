@@ -4,8 +4,8 @@ import seaborn as sns
 import streamlit as st
 
 # Load dataset
-day_data = pd.read_csv("../data/data_1.csv")
-hour_data = pd.read_csv("../data/data_2.csv")
+day_data = pd.read_csv("data/data_1.csv")
+hour_data = pd.read_csv("data/data_2.csv")
 
 # Convert date column to datetime format
 day_data['dteday'] = pd.to_datetime(day_data['dteday'])
@@ -33,6 +33,12 @@ if st.checkbox("Tampilkan Dataframe"):
 # Statistik ringkas
 st.metric(label="Rata-rata Peminjaman", value=int(day_data['cnt'].mean()))
 st.metric(label="Rata-rata Suhu", value=round(day_data['temp'].mean(), 2))
+
+# Visualisasi distribusi jumlah peminjaman
+st.subheader("Distribusi Jumlah Peminjaman Sepeda")
+fig, ax = plt.subplots(figsize=(10, 6))
+sns.histplot(day_data['cnt'], bins=30, kde=True, ax=ax)
+st.pyplot(fig)
 
 # Visualisasi penggunaan sepeda berdasarkan musim
 st.subheader("Jumlah Penyewa Berdasarkan Musim")
@@ -71,17 +77,21 @@ fig, ax = plt.subplots(figsize=(10, 6))
 sns.scatterplot(x='hum', y='cnt', data=day_data, palette="coolwarm", ax=ax)
 st.pyplot(fig)
 
-# Visualisasi pengaruh kecepatan angin
+# Visualisasi pengaruh kecepatan angin terhadap peminjaman
 st.subheader("Pengaruh Kecepatan Angin terhadap Penggunaan Sepeda")
 fig, ax = plt.subplots(figsize=(10, 6))
 sns.scatterplot(x='windspeed', y='cnt', data=day_data, palette="coolwarm", ax=ax)
 st.pyplot(fig)
 
-# Heatmap korelasi
-st.subheader("Heatmap Korelasi")
+# Visualisasi korelasi antar variabel
+st.subheader("Heatmap Korelasi Antar Variabel")
 fig, ax = plt.subplots(figsize=(10, 5))
 sns.heatmap(day_data.corr(), annot=True, cmap="coolwarm", fmt=".2f", ax=ax)
 st.pyplot(fig)
+
+# Statistik ringkas (data akhir setelah filter)
+st.write("**Statistik Data Setelah Filter:**")
+st.write(day_data.describe())
 
 st.write("---")
 st.write("Dibuat oleh Muhammad Nasywan Sulthan Muyassar Arhata")
