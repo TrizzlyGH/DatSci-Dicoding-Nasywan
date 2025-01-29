@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load dataset
-day_data = pd.read_csv("../data/data_1.csv")
-hour_data = pd.read_csv("../data/data_2.csv")
+day_data = pd.read_csv("data/data_1.csv")
+hour_data = pd.read_csv("data/data_2.csv")
 
 # Judul dashboard
 st.title("📊 Bike Sharing Dashboard")
