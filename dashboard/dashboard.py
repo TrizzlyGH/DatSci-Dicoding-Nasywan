@@ -93,7 +93,7 @@ st.pyplot(fig)
 # Visualisasi korelasi antar variabel
 st.subheader("Heatmap Korelasi Antar Variabel")
 fig, ax = plt.subplots(figsize=(10, 5))
-sns.heatmap(day_data.corr(), annot=True, cmap="coolwarm", fmt=".2f", ax=ax)
+sns.heatmap(day_data.select_dtypes(include=['number']).corr(), annot=True, cmap="coolwarm", fmt=".2f", ax=ax)
 st.pyplot(fig)
 
 # Statistik ringkas (data akhir setelah filter)
