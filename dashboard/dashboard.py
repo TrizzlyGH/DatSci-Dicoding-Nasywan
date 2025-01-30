@@ -10,13 +10,20 @@ hour_data = pd.read_csv("data/data_2.csv")
 # Convert date column to datetime format
 day_data['dteday'] = pd.to_datetime(day_data['dteday'])
 
+# Map categorical data to more informative labels
+season_map = {1: 'Spring', 2: 'Summer', 3: 'Fall', 4: 'Winter'}
+weather_map = {1: 'Clear', 2: 'Mist', 3: 'Light Snow/Rain', 4: 'Heavy Rain/Snow'}
+
+day_data['season'] = day_data['season'].map(season_map)
+day_data['weathersit'] = day_data['weathersit'].map(weather_map)
+
 # Judul dashboard
 st.title("📊 Bike Sharing Dashboard")
 st.write("Analisis pola penggunaan sepeda berdasarkan waktu dan faktor cuaca.")
 
 # Sidebar untuk filter
 st.sidebar.header("Filter Data")
-selected_season = st.sidebar.selectbox("Pilih Musim:", ["Semua", 1, 2, 3, 4])
+selected_season = st.sidebar.selectbox("Pilih Musim:", ["Semua"] + list(season_map.values()))
 selected_temp_range = st.sidebar.slider("Pilih Rentang Suhu:", float(day_data['temp'].min()), float(day_data['temp'].max()), (float(day_data['temp'].min()), float(day_data['temp'].max())))
 
 # Filter berdasarkan musim jika dipilih
