@@ -11,8 +11,8 @@ hour_data = pd.read_csv("data/data_2.csv")
 day_data['dteday'] = pd.to_datetime(day_data['dteday'])
 
 # Map categorical data to more informative labels
-season_map = {1: 'Spring', 2: 'Summer', 3: 'Fall', 4: 'Winter'}
-weather_map = {1: 'Clear', 2: 'Mist', 3: 'Light Snow/Rain', 4: 'Heavy Rain/Snow'}
+season_map = {1: 'Musim Dingin', 2: 'Musim Gugur', 3: 'Musim Panas', 4: 'Musim Semi'}
+weather_map = {1: 'Berawan', 2: 'Cerah', 3: 'Hujan/Salju'}
 
 day_data['season'] = day_data['season'].map(season_map)
 day_data['weathersit'] = day_data['weathersit'].map(weather_map)
