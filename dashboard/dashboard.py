@@ -12,7 +12,7 @@ day_data['dteday'] = pd.to_datetime(day_data['dteday'])
 
 # Map categorical data to more informative labels
 season_map = {1: 'Musim Dingin', 2: 'Musim Gugur', 3: 'Musim Panas', 4: 'Musim Semi'}
-weather_map = {1: 'Berawan', 2: 'Cerah', 3: 'Hujan/Salju'}
+weather_map = {1: 'Cerah', 2: 'Berawan', 3: 'Hujan/Salju'}
 
 day_data['season'] = day_data['season'].map(season_map)
 day_data['weathersit'] = day_data['weathersit'].map(weather_map)
